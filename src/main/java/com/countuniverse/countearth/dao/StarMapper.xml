@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.countuniverse.countearth.dao.StarMapper" >
+  <resultMap id="BaseResultMap" type="com.countuniverse.countearth.model.Star" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="diameter" property="diameter" jdbcType="INTEGER" />
+    <result column="rotation_period" property="rotationPeriod" jdbcType="INTEGER" />
+    <result column="mass" property="mass" jdbcType="INTEGER" />
+    <result column="gravity" property="gravity" jdbcType="INTEGER" />
+    <result column="volume" property="volume" jdbcType="INTEGER" />
+    <result column="density" property="density" jdbcType="INTEGER" />
+    <result column="orbit_id" property="orbitId" jdbcType="CHAR" />
+    <result column="category_id" property="categoryId" jdbcType="CHAR" />
+    <result column="master_id" property="masterId" jdbcType="CHAR" />
+    <result column="loc_id" property="locId" jdbcType="CHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="CHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, age, nick_name, diameter, rotation_period, mass, gravity, volume, density, 
+    orbit_id, category_id, master_id, loc_id, create_time, create_by, update_time, update_by
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from star
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from star
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.countuniverse.countearth.model.Star" >
+    insert into star (id, name, age, nick_name, 
+      diameter, rotation_period, mass, 
+      gravity, volume, density, 
+      orbit_id, category_id, master_id, 
+      loc_id, create_time, create_by, 
+      update_time, update_by)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{nickName,jdbcType=VARCHAR}, 
+      #{diameter,jdbcType=INTEGER}, #{rotationPeriod,jdbcType=INTEGER}, #{mass,jdbcType=INTEGER}, 
+      #{gravity,jdbcType=INTEGER}, #{volume,jdbcType=INTEGER}, #{density,jdbcType=INTEGER}, 
+      #{orbitId,jdbcType=CHAR}, #{categoryId,jdbcType=CHAR}, #{masterId,jdbcType=CHAR}, 
+      #{locId,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.countuniverse.countearth.model.Star" >
+    insert into star
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="diameter != null" >
+        diameter,
+      </if>
+      <if test="rotationPeriod != null" >
+        rotation_period,
+      </if>
+      <if test="mass != null" >
+        mass,
+      </if>
+      <if test="gravity != null" >
+        gravity,
+      </if>
+      <if test="volume != null" >
+        volume,
+      </if>
+      <if test="density != null" >
+        density,
+      </if>
+      <if test="orbitId != null" >
+        orbit_id,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="masterId != null" >
+        master_id,
+      </if>
+      <if test="locId != null" >
+        loc_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="diameter != null" >
+        #{diameter,jdbcType=INTEGER},
+      </if>
+      <if test="rotationPeriod != null" >
+        #{rotationPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="mass != null" >
+        #{mass,jdbcType=INTEGER},
+      </if>
+      <if test="gravity != null" >
+        #{gravity,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null" >
+        #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="density != null" >
+        #{density,jdbcType=INTEGER},
+      </if>
+      <if test="orbitId != null" >
+        #{orbitId,jdbcType=CHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=CHAR},
+      </if>
+      <if test="masterId != null" >
+        #{masterId,jdbcType=CHAR},
+      </if>
+      <if test="locId != null" >
+        #{locId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.countuniverse.countearth.model.Star" >
+    update star
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="diameter != null" >
+        diameter = #{diameter,jdbcType=INTEGER},
+      </if>
+      <if test="rotationPeriod != null" >
+        rotation_period = #{rotationPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="mass != null" >
+        mass = #{mass,jdbcType=INTEGER},
+      </if>
+      <if test="gravity != null" >
+        gravity = #{gravity,jdbcType=INTEGER},
+      </if>
+      <if test="volume != null" >
+        volume = #{volume,jdbcType=INTEGER},
+      </if>
+      <if test="density != null" >
+        density = #{density,jdbcType=INTEGER},
+      </if>
+      <if test="orbitId != null" >
+        orbit_id = #{orbitId,jdbcType=CHAR},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=CHAR},
+      </if>
+      <if test="masterId != null" >
+        master_id = #{masterId,jdbcType=CHAR},
+      </if>
+      <if test="locId != null" >
+        loc_id = #{locId,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.countuniverse.countearth.model.Star" >
+    update star
+    set name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      diameter = #{diameter,jdbcType=INTEGER},
+      rotation_period = #{rotationPeriod,jdbcType=INTEGER},
+      mass = #{mass,jdbcType=INTEGER},
+      gravity = #{gravity,jdbcType=INTEGER},
+      volume = #{volume,jdbcType=INTEGER},
+      density = #{density,jdbcType=INTEGER},
+      orbit_id = #{orbitId,jdbcType=CHAR},
+      category_id = #{categoryId,jdbcType=CHAR},
+      master_id = #{masterId,jdbcType=CHAR},
+      loc_id = #{locId,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=CHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+
+  <!-- 查询  -->
+  <resultMap id="StarVOMap" type="com.countuniverse.countearth.vo.StarVO" extends="BaseResultMap">
+    <association property="category" column="categoryId" javaType="com.countuniverse.countearth.model.Category" select="com.countuniverse.countearth.dao.CategoryMapper.selectByPrimaryKey"></association>
+    <association property="orbit" column="orbitId" javaType="com.countuniverse.countearth.model.Orbit" select="com.countuniverse.countearth.dao.OrbitMapper.selectByPrimaryKey"></association>
+    <association property="location" column="locId" javaType="com.countuniverse.countearth.model.Location" select="com.countuniverse.countearth.dao.LocationMapper.selectByPrimaryKey"></association>
+    <collection property="satellite" javaType="list" column="id" select="com.countuniverse.countearth.dao.StarMapper.findSateVO"></collection>
+  </resultMap>
+  <select id="oneWithSate" parameterType="map" resultMap="StarVOMap">
+    SELECT
+    <include refid="BaseResultMap"/>
+    FROM
+    star
+    WHERE 1=1
+    <if test="id != null">
+      AND id = #{id,jdbcType=CHAR}
+    </if>
+    <if test="orbitId != null" >
+      orbit_id = #{orbitId,jdbcType=CHAR},
+    </if>
+    <if test="categoryId != null" >
+      category_id = #{categoryId,jdbcType=CHAR},
+    </if>
+    <if test="masterId != null" >
+      master_id = #{masterId,jdbcType=CHAR},
+    </if>
+    <if test="locId != null" >
+      loc_id = #{locId,jdbcType=CHAR},
+    </if>
+    <if test="createTime != null" >
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="createBy != null" >
+      create_by = #{createBy,jdbcType=CHAR},
+    </if>
+    <if test="updateTime != null" >
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="updateBy != null" >
+      update_by = #{updateBy,jdbcType=CHAR},
+    </if>
+  </select>
+
+  <select id="findSateVO" resultMap="StarVOMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from star
+    where master_id = #{id,jdbcType=CHAR}
+  </select>
+
+</mapper>

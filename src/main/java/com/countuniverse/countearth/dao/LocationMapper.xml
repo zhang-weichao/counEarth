@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.countuniverse.countearth.dao.LocationMapper" >
+  <resultMap id="BaseResultMap" type="com.countuniverse.countearth.model.Location" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="w" property="w" jdbcType="DECIMAL" />
+    <result column="x" property="x" jdbcType="DECIMAL" />
+    <result column="y" property="y" jdbcType="DECIMAL" />
+    <result column="z" property="z" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, w, x, y, z
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from location
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from location
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.countuniverse.countearth.model.Location" >
+    insert into location (id, name, w, x, 
+      y, z)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{w,jdbcType=DECIMAL}, #{x,jdbcType=DECIMAL}, 
+      #{y,jdbcType=DECIMAL}, #{z,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.countuniverse.countearth.model.Location" >
+    insert into location
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="w != null" >
+        w,
+      </if>
+      <if test="x != null" >
+        x,
+      </if>
+      <if test="y != null" >
+        y,
+      </if>
+      <if test="z != null" >
+        z,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="w != null" >
+        #{w,jdbcType=DECIMAL},
+      </if>
+      <if test="x != null" >
+        #{x,jdbcType=DECIMAL},
+      </if>
+      <if test="y != null" >
+        #{y,jdbcType=DECIMAL},
+      </if>
+      <if test="z != null" >
+        #{z,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.countuniverse.countearth.model.Location" >
+    update location
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="w != null" >
+        w = #{w,jdbcType=DECIMAL},
+      </if>
+      <if test="x != null" >
+        x = #{x,jdbcType=DECIMAL},
+      </if>
+      <if test="y != null" >
+        y = #{y,jdbcType=DECIMAL},
+      </if>
+      <if test="z != null" >
+        z = #{z,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.countuniverse.countearth.model.Location" >
+    update location
+    set name = #{name,jdbcType=VARCHAR},
+      w = #{w,jdbcType=DECIMAL},
+      x = #{x,jdbcType=DECIMAL},
+      y = #{y,jdbcType=DECIMAL},
+      z = #{z,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
